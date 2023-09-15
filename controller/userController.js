@@ -1,4 +1,3 @@
-const { name } = require('../model/user');
 const User = require('../model/user');
 const secret = require('../config/auth.json');
 const jwt = require('jsonwebtoken');
