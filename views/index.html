@@ -8,17 +8,35 @@
 </head>
 
 <body>
-    <h1>API - USER</h1>
-    <div class="container">
-        <% pessoas.forEach((pessoa) => { %>
-       <div class="card">
-         <h3>Pessoa</h3>
-         <h4>Nome: <%= pessoa.nome %></h4>
-         <h4>Sobrenome: <%= pessoa.sobrenome %></h4>
-         <h4>Idade: <%= pessoa.idade %></h4>
-       </div>
-        <% }) %> 
-     </div>
+  <h1>API - USER</h1>
+  <div class="container">
+    <% users.forEach((user) => { %>
+    <div class="card">
+      <h3>Pessoa</h3>
+      <h4>Nome: <%= user.name %></h4>
+      <h4>Sobrenome: <%= user.password %></h4>
+      <h4>Idade: <%= user.email %></h4>
+    </div>
+    <% }) %> 
+  </div>
+  <div class="container-endpoints">
+    <div>
+      <h2>GET</h2>
+      <h3>Links</h3>
+    </div>
+    <div>
+      <h2>POST</h2>
+      <h3>Links</h3>
+    </div>
+    <div>
+      <h2>PUT</h2>
+      <h3>Links</h3>
+    </div>
+    <div>
+      <h2>DELETE</h2>
+      <h3>Links</h3>
+    </div>
+  </div>
 </body>
 
 </html>
