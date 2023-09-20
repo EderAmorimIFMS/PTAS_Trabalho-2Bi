@@ -52,7 +52,7 @@ const findOneUser = async (req, res) => {
     };
 }
 
-const deletUser = async (req, res) => {
+const deleteUser = async (req, res) => {
     const id = parseInt(req.params.id);
 
     try {

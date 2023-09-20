@@ -16,7 +16,10 @@ const routes = require('./routers/routes');
 app.use(express.json(), routes, cors());
 app.listen(port, () => { console.log(`Run server...${port}`) });
 
-
+app.get('/', async function(req, res){
+    var user = await user.findAll();
+    res.render('index', { user });
+  })
 
 app.get('/', (req, res) => {
     const filePath = path.join(__dirname, 'views', 'index.html');

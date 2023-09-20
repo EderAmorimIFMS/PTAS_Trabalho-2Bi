@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 
-const sequelize = new Sequelize("",{
+const sequelize = new Sequelize("postgres://yibeumit:wRhSAFaK8JU5YLsvLjJwWYf2gdu6EkkD@silly.db.elephantsql.com/yibeumit",{
 define:{
   timetamps:true,
   underscored:true,
