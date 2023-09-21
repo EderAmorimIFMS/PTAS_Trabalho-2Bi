@@ -1,6 +1,6 @@
 const db = require('../config/connection');
 
-const User = db.sequelize.define('DB_User',{
+const User = db.sequelize.define('user',{
     id: {
         type: db.Sequelize.INTEGER,
         autoIncrement: true,

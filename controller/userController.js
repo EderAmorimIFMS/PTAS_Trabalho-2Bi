@@ -16,7 +16,7 @@ const createUser = async (req, res) => {
         return res.json('Cadastro de usuário realizado com sucesso!');
 
     } catch (error) {
-        console.log(`Erro ao cadastrar: ${erro}`);
+        console.log(`Erro ao cadastrar: ${error}`);
         return res.status(404).json("Ocorreu um erro ao cadastrar usuário!");
 
     };
@@ -26,9 +26,8 @@ const findAllUser = async (req, res) => {
     try {
         const user = await User.findAll();
         res.json(user);
-
     } catch (error) {
-        console.log(`Erro ao buscar todos: ${erro}`);
+        console.log(`Erro ao buscar todos: ${error}`);
         return res.status(404).json("Ocorreu um erro ao buscar todos usuários!");
     }
 }
@@ -46,7 +45,7 @@ const findOneUser = async (req, res) => {
         return res.json(user); 
 
     } catch (error) {
-        console.log(`Erro ao buscar um: ${erro}`);
+        console.log(`Erro ao buscar um: ${error}`);
         return res.status(404).json("Ocorreu um erro ao buscar um usuário!");
 
     };
@@ -66,7 +65,7 @@ const deleteUser = async (req, res) => {
         console.log('Usuário apagado com sucesso!');
         
     } catch (error) {
-        console.log(`Erro ao deletar: ${erro}`);
+        console.log(`Erro ao deletar: ${error}`);
         return res.status(404).json("Ocorreu um erro ao deletar usuário!");
     };
 }
@@ -90,7 +89,7 @@ const updateUser = async (req, res) => {
         console.log('Usuário atualizado com sucesso!');
         
     } catch (error) {
-        console.log(`Erro ao atualizar: ${erro}`);
+        console.log(`Erro ao atualizar: ${error}`);
         return res.status(404).json("Ocorreu um erro ao atualizar usuário!");
 
     };
@@ -124,7 +123,7 @@ const authenticatedUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(`Erro ao autenticar: ${erro}`);
+        console.log(`Erro ao autenticar: ${error}`);
         return res.status(404).json("Ocorreu um erro autenticar usuário!");
 
     };

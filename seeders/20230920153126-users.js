@@ -19,6 +19,16 @@ module.exports = {
         password: 'senha333',
         email: 'silva@gmail.com',
       },
+      {
+        name: 'Renato',
+        password: 'senha333',
+        email: 'renato@gmail.com',
+      },
+      {
+        name: 'Marcelino',
+        password: 'senha333',
+        email: 'marcelino@gmail.com',
+      },
     ], {});
   },
 

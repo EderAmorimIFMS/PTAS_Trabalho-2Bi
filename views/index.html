@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>API - Users</title>
 </head>
 
@@ -28,7 +28,7 @@
   </div>
   <div class="container config-container dados">
     <h2 class="center-text">Dados:</h2>
-    <%= users%>
+    <%= JSON.stringify(users) %>
   </div>
   <div class="container">
     <div class="card">
