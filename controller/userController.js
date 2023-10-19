@@ -1,14 +1,17 @@
 const User = require('../models/user');
 const secret = require('../config/auth.json');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
 
 const createUser = async (req, res) => {
-    const { name, password, email } = req.body;
-
     try {
+        const { name, password, email } = req.body;
+        const passwordHash = await bcrypt.hash(password, 10);
+    
         await User.create({
             name: name,
-            password: password,
+            password: passwordHash,
             email: email
         });
 
@@ -33,9 +36,8 @@ const findAllUser = async (req, res) => {
 }
 
 const findOneUser = async (req, res) => {
-    const id = req.body.id;
-
     try {
+        const id = req.body.id;
         const user = await User.findOne({
             where: {
                 id: id
@@ -52,9 +54,9 @@ const findOneUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    const id = parseInt(req.params.id);
-
     try {
+        const id = parseInt(req.params.id);
+
         await User.destroy({
             where: {
                 id: id
@@ -71,13 +73,15 @@ const deleteUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
+  try {
     const id = parseInt(req.params.id);
     const { name, password, email } = req.body;
+    const passwordHash = await bcrypt.hash(password, 10);
 
-    try {
+
         await User.update({
             name: name,
-            password: password,
+            password: passwordHash,
             email: email
         },{
             where: {
@@ -97,30 +101,39 @@ const updateUser = async (req, res) => {
 
 
 const authenticatedUser = async (req, res) => {
-    const { email, password } = req.body;
-
     try{
+        const { email, passwordCrypt } = req.body;
+
         const isAuthenticated =  await User.findOne({
             where: {
                 email: email,
                 password: password
             }
         });
+ 
+        const response = await bcrypt.compare(isAuthenticated.password, passwordCrypt);
 
-        const token = jwt.sign({
-            id: email
+        if(response){
+            const token = jwt.sign({
+                id: email
+    
+            }, secret.secret, {
+                expiresIn: 86400,
+    
+            }); 
 
-        }, secret.secret, {
-            expiresIn: 86400,
+            return res.json({
+                name: isAuthenticated.name,
+                email: isAuthenticated.email,
+                token: token
+            
+            });
 
-        });
+        } else {
+            res.json('Ops senha incorreta!');
 
-        return res.json({
-            name: isAuthenticated.name,
-            email: isAuthenticated.email,
-            token: token
+        }
         
-        });
 
     } catch (error) {
         console.log(`Erro ao autenticar: ${error}`);
