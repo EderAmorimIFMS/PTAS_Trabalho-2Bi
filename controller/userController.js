@@ -121,19 +121,15 @@ const authenticatedUser = async (req, res) => {
     
             }); 
 
-            return res.json({
+            res.json({
                 name: isAuthenticated.name,
                 email: isAuthenticated.email,
                 token: token
-            
-            });
-
-        } else {
-            res.json('Ops senha incorreta!');
+            })
+            console.log('Usuário autenticado com sucesso!!!');
 
         }
         
-
     } catch (error) {
         console.log(`Erro ao autenticar: ${error}`);
         return res.status(404).json("Ocorreu um erro autenticar usuário!");
