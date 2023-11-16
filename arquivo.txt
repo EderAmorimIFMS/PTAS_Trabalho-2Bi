@@ -9,3 +9,9 @@
     "email": "ederamorim@gmail.com",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVkZXJhbW9yaW1AZ21haWwuY29tIiwiaWF0IjoxNjk1MzI5MTMwLCJleHAiOjE2OTU0MTU1MzB9.wsR6xpSunXthqjrqoaVvNeo7hDSjjqU_7x_Ivh65Khw"
 }
+
+{
+    "name": "João da Silva",
+    "email": "joaodasilva@gmail.com",
+    "password": "senhaxxx"
+}

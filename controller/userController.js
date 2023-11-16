@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const secret = require('../config/auth.json');
+const secret = process.env.SECRET;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -114,22 +114,21 @@ const authenticatedUser = async (req, res) => {
 
         if(response){
             const token = jwt.sign({
-                id: email
+                id: email   
     
             }, secret.secret, {
                 expiresIn: 86400,
     
             }); 
 
-            res.json({
-                name: isAuthenticated.name,
-                email: isAuthenticated.email,
+            res.cookie('token', token, { httpOnly: true }).json({
+                name: isUserAuthenticated.name,
+                email: isUserAuthenticated.email,
                 token: token
-            })
-            console.log('Usuário autenticado com sucesso!!!');
+            });
 
+            console.log('Usuário autenticado com sucesso!!!');
         }
-        
     } catch (error) {
         console.log(`Erro ao autenticar: ${error}`);
         return res.status(404).json("Ocorreu um erro autenticar usuário!");
